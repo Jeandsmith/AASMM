@@ -27,13 +27,13 @@
                 android:text="TextView"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical" />
 
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="26dp" >
+            android:layout_height="26dp">
 
             <ImageButton
                 android:layout_width="wrap_content"
