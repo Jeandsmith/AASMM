@@ -4,7 +4,7 @@
     package="com.example.aasmm">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -12,20 +12,22 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
 
-
-        <activity
-            android:name=".MainLanding">
-
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme"
+            android:label="Landing Page">
             <intent-filter>
-                <action> a</action>
-            </intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+
+        <activity android:name=".MainLanding"></activity>
 
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
-            android:parentActivityName=".MainLanding"/>
+            android:parentActivityName=".MainLanding" />
     </application>
 
 </manifest>
