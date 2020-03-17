@@ -15,11 +15,6 @@
 
         <activity
             android:name=".MainLanding">
-
-            <intent-filter>
-                <action> a</action>
-            </intent-filter>
-
         </activity>
 
         <activity
