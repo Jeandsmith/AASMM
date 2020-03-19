@@ -8,6 +8,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -16,8 +17,24 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.aasmm.R
+import com.google.firebase.auth.ActionCodeSettings
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
+
+    val actionCodeSettings = ActionCodeSettings.newBuilder()
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be whitelisted in the Firebase Console.
+        .setUrl("https://www.aasmm.com")
+        // This must be true
+        .setHandleCodeInApp(true)
+        .setIOSBundleId("com.example.ios")
+        .setAndroidPackageName(
+            "com.example.aasmm",
+            true, /* installIfNotAvailable */
+            "12" /* minimumVersion */
+        )
+        .build()
 
     private lateinit var loginViewModel: LoginViewModel
 
@@ -40,12 +57,10 @@ class LoginActivity : AppCompatActivity() {
             // disable login button unless both username / password is valid
             login.isEnabled = loginState.isDataValid
 
-            if (loginState.usernameError != null) {
-                username.error = getString(loginState.usernameError)
-            }
-            if (loginState.passwordError != null) {
-                password.error = getString(loginState.passwordError)
-            }
+            if (loginState.usernameError != null) username.error =
+                getString(loginState.usernameError)
+            if (loginState.passwordError != null) password.error =
+                getString(loginState.passwordError)
         })
 
         loginViewModel.loginResult.observe(this@LoginActivity, Observer {
@@ -95,6 +110,17 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
+
+//        TODO : Implement authentications
+//        Auth user input
+//        val auth = FirebaseAuth.getInstance()
+//        auth.sendSignInLinkToEmail(username.text.toString(), actionCodeSettings)
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+////                    Log.d(TAG, "Email sent.")
+//                }
+//            }
+
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
