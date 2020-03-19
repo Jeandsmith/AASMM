@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "258699375290",
+    "firebase_url": "https://aasmm-3faf3.firebaseio.com",
+    "project_id": "aasmm-3faf3",
+    "storage_bucket": "aasmm-3faf3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:258699375290:android:33e6dd1e09da9eb38d0883",
+        "android_client_info": {
+          "package_name": "com.example.aasmm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "258699375290-9uapop5j8r3njm68gthuhhr1i0t4rhmq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA69n6zGrUQUnPk2IxJMKJHm3a8XZIwiA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "258699375290-9uapop5j8r3njm68gthuhhr1i0t4rhmq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
