@@ -37,14 +37,18 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="206dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_post" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
