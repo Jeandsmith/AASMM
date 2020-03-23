@@ -27,9 +27,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="-46.70794"
-     inkscape:cy="80.886587"
+     inkscape:zoom="2.8"
+     inkscape:cx="202.49482"
+     inkscape:cy="52.064302"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -58,21 +58,20 @@
      transform="translate(-63.353626,-97.649223)">
     <rect
        y="97.649223"
-       x="63.604774"
-       height="40.3577"
-       width="79.646317"
+       x="63.226799"
+       height="40.641182"
+       width="80.21328"
        id="rect817"
-       style="opacity:1;fill:#0055d4;fill-opacity:1;stroke:none;stroke-width:0.22766328;stroke-opacity:0"
+       style="opacity:1;fill:#0055d4;fill-opacity:1;stroke:none;stroke-width:0.22927317;stroke-opacity:0"
        ry="0" />
     <rect
-       style="opacity:1;fill:#0066ff;fill-opacity:1;stroke:none;stroke-width:0.21816599;stroke-opacity:0"
-       id="rect815"
-       width="77.775429"
-       height="37.952274"
-       x="63.353626"
-       y="97.776764"
-       ry="6.4144688"
-       rx="0" />
+       ry="0"
+       style="opacity:1;fill:#0066ff;fill-opacity:1;stroke:none;stroke-width:0.22522114;stroke-opacity:0"
+       id="rect2271"
+       width="78.70137"
+       height="39.03479"
+       x="63.321293"
+       y="97.743721" />
     <text
        transform="scale(1.0056693,0.99436266)"
        id="text825"
