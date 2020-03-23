@@ -111,7 +111,8 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-//        TODO : Implement authentications
+//        TODO : Implement authentications.
+//        TODO : Read the docs
 //        Auth user input
 //        val auth = FirebaseAuth.getInstance()
 //        auth.sendSignInLinkToEmail(username.text.toString(), actionCodeSettings)

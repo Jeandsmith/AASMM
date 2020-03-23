@@ -12,4 +12,7 @@
     <string name="text_post">Text</string>
     <string name="ChoosePostType">Choose Post Type</string>
     <string name="newPostQuote">New Post Quote Button</string>
+    <string name="new_post">Write New Post</string>
+    <string name="write_you_re_new_post_hint">Write you\'re new post</string>
+    <string name="create_new_post_text_view">Create A New Post</string>
 </resources>
