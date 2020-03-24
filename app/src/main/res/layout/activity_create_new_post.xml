@@ -10,11 +10,7 @@
         android:id="@+id/new_post"
         android:layout_width="315dp"
         android:layout_height="62dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="64dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="start|top"
@@ -23,7 +19,7 @@
         android:lines="4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cnp_text_view" />
 
     <TextView
         android:id="@+id/cnp_text_view"
@@ -42,13 +38,14 @@
         android:paddingLeft="@dimen/activity_horizontal_margin" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="Button"
+        android:id="@+id/post_button"
+        android:layout_width="113dp"
+        android:layout_height="55dp"
+        android:text="@string/post_button"
+        android:textAllCaps="true"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_post" />
+        tools:layout_editor_absoluteY="557dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
