@@ -11,18 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".ImageActivity" />
         <activity android:name=".CreateNewPostActivity">
-
             <intent-filter>
-
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-
             </intent-filter>
-
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".MainLanding" />
+        <activity android:name=".MainLanding" android:exported="true"/>
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
