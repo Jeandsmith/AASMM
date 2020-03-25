@@ -15,4 +15,6 @@
     <string name="new_post">Write New Post</string>
     <string name="write_you_re_new_post_hint">Write you\'re new post</string>
     <string name="create_new_post_text_view">Create A New Post</string>
+    <string name="post_button">post</string>
+    <string name="write_new_post">Write New Post</string>
 </resources>
