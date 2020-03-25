@@ -25,6 +25,7 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login"
             android:parentActivityName=".MainLanding" />
+        <activity android:name=".MainActivity" android:exported="true"/>
     </application>
 
 </manifest>
