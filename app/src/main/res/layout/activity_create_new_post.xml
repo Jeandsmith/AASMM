@@ -36,24 +36,4 @@
         app:layout_constraintTop_toBottomOf="@+id/cnp_text_view"/>
 
 
-    <Button
-        android:id="@+id/postButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/post_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rec_id" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rec_id"
-        android:layout_width="0dp"
-        android:layout_height="330dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
