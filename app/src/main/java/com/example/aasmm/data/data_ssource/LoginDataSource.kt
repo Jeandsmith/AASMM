@@ -1,5 +1,6 @@
-package com.example.aasmm.data
+package com.example.aasmm.data.data_ssource
 
+import com.example.aasmm.data.Result
 import com.example.aasmm.data.model.LoggedInUser
 import java.io.IOException
 
@@ -14,7 +15,12 @@ class LoginDataSource {
             val fakeUser = LoggedInUser(java.util.UUID.randomUUID().toString(), "Jane Doe")
             return Result.Success(fakeUser)
         } catch (e: Throwable) {
-            return Result.Error(IOException("Error logging in", e))
+            return Result.Error(
+                IOException(
+                    "Error logging in",
+                    e
+                )
+            )
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.aasmm.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -15,8 +16,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.example.aasmm.MainLanding
 
 import com.example.aasmm.R
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
 
@@ -38,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
 
+//    On activity creation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -75,6 +79,10 @@ class LoginActivity : AppCompatActivity() {
             }
             setResult(Activity.RESULT_OK)
 
+//            Load main landing
+            val intent = Intent(this, MainLanding::class.java)
+            startActivity(intent)
+
             //Complete and destroy login activity once successful
             finish()
         })
@@ -108,6 +116,7 @@ class LoginActivity : AppCompatActivity() {
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
+//                Snackbar.make(it, "You have clicked with empty field", Snackbar.LENGTH_LONG).show()
             }
         }
 

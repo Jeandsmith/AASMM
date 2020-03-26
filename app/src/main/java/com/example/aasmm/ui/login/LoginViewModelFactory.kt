@@ -2,7 +2,7 @@ package com.example.aasmm.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.aasmm.data.LoginDataSource
+import com.example.aasmm.data.data_ssource.LoginDataSource
 import com.example.aasmm.data.LoginRepository
 
 /**
