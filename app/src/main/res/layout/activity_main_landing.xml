@@ -6,63 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".MainLanding">
 
-    <TableLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/text_view_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardPreventCornerOverlap="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="62dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:gravity="center_vertical"
                 android:text="TextView"
+                android:textAlignment="viewStart"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="center_vertical" />
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        </TableRow>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/post_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_card">
 
-        <TableRow
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="26dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/post_button"
                 android:layout_width="wrap_content"
                 android:layout_height="98dp"
+                android:background="#FFFFFF"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/ic_quote" />
-        </TableRow>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        <TableRow
+    <androidx.cardview.widget.CardView
+        android:id="@+id/image_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_card_view">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="26dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/image_button"
                 android:layout_width="wrap_content"
                 android:layout_height="98dp"
+                android:background="#FFFFFF"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/ic_photo" />
-        </TableRow>
+                app:srcCompat="@drawable/image" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        <TableRow
+    <androidx.cardview.widget.CardView
+        android:id="@+id/event_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_card_view">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="26dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <ImageButton
+                android:id="@+id/event_button"
                 android:layout_width="wrap_content"
                 android:layout_height="98dp"
+                android:background="#FFFFFF"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/ic_event" />
-        </TableRow>
+                app:srcCompat="@drawable/event" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

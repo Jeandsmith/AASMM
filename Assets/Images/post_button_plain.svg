@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xsi:schemaLocation="http://www.inkscape.org/namespaces/inkscape http://www.inkscape.org/namespaces/inkscape http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd "
-   width="167.56187mm"
-   viewBox="0 0 167.56187 83.250098"
-   version="1.1"
-   id="svg8"
-   height="83.250099mm">
+<svg xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xsi:schemaLocation="e http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="167.56187mm"
+    viewBox="0 0 167.56187 83.250098" version="1.1" id="svg8" height="83.250099mm">
   <defs
      id="defs2" />
   <metadata
