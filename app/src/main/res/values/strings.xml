@@ -19,4 +19,7 @@
     <string name="write_new_post">Write New Post</string>
     <string name="sm_title">sm_title</string>
     <string name="social_media_icon">Social media icon</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

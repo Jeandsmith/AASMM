@@ -2,9 +2,8 @@ package com.example.aasmm
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-
+import kotlinx.android.synthetic.main.activity_main_landing.*
 
 class MainLanding : AppCompatActivity() {
 
@@ -12,33 +11,21 @@ class MainLanding : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_landing)
 
-        val textButton = findViewById<ImageButton>(R.id.text)
-        val imageButton = findViewById<ImageButton>(R.id.image)
-        val eventButton = findViewById<ImageButton>(R.id.event)
-
-        textButton.setOnClickListener() {
-            openTextActivity()
+        post_button.setOnClickListener{
+            val intent = Intent(this, CreateNewPostActivity::class.java)
+            startActivity(intent)
+//            Because the user might want to return to the main landing, we cannot release the activity
         }
-        imageButton.setOnClickListener() {
-            openImageActivity()
+        image_button.setOnClickListener {
+            val intent = Intent(this, CreateNewImagePostActivity::class.java)
+            startActivity(intent)
+//            Because the user might want to return to the main landing, we cannot release the activity
         }
-        eventButton.setOnClickListener() {
-            openEventActivity()
+        event_button.setOnClickListener {
+            val intent = Intent(this, CreateNewEventActivity::class.java)
+            startActivity(intent)
+//            Because the user might want to return to the main landing, we cannot release the activity
         }
-    }
 
-    fun openTextActivity(){
-        val myIntent = Intent(this, CreateNewPostActivity::class.java)
-        startActivity(myIntent)
-    }
-
-    fun openImageActivity(){
-        val myIntent = Intent(this, ImageActivity::class.java)
-        startActivity(myIntent)
-    }
-
-    fun openEventActivity(){
-        val myIntent = Intent(this, EventActivity::class.java)
-        startActivity(myIntent)
     }
 }
