@@ -49,7 +49,6 @@
                 android:id="@+id/post_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 app:cardPreventCornerOverlap="true"
                 app:layout_constraintLeft_toRightOf="parent"
                 app:layout_constraintRight_toLeftOf="parent"
@@ -64,8 +63,8 @@
                         android:id="@+id/post_button"
                         android:layout_width="match_parent"
                         android:layout_height="98dp"
+                        android:paddingTop="7dp"
                         android:background="#FFFFFF"
-                        android:contentDescription="TODO"
                         android:scaleType="centerInside"
                         app:srcCompat="@drawable/ic_quote" />
                 </LinearLayout>
@@ -75,7 +74,6 @@
                 android:id="@+id/image_card_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 app:cardPreventCornerOverlap="true"
                 app:layout_constraintLeft_toRightOf="parent"
                 app:layout_constraintRight_toLeftOf="parent"
@@ -91,6 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="98dp"
                         android:background="#FFFFFF"
+                        android:paddingTop="7dp"
                         android:scaleType="centerInside"
                         app:srcCompat="@drawable/event" />
                 </LinearLayout>
@@ -99,7 +98,6 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_card_view">
@@ -114,10 +112,37 @@
                         android:layout_width="match_parent"
                         android:layout_height="98dp"
                         android:background="#FFFFFF"
+                        android:paddingTop="7dp"
                         android:scaleType="centerInside"
                         app:srcCompat="@drawable/image"
-                        android:contentDescription="TODO" />
+                        tools:ignore="ContentDescription" />
 
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/logout_card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardPreventCornerOverlap="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/event_card_view">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/logoutButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="98dp"
+                        android:paddingTop="7dp"
+                        android:background="@color/icons"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/settings" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
