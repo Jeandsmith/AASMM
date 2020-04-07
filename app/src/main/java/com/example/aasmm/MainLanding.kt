@@ -33,7 +33,7 @@ class MainLanding : AppCompatActivity() {
     }
 
     fun openImageActivity(){
-        val myIntent = Intent(this, CreateNewImageActivity::class.java)
+        val myIntent = Intent(this, CreateNewImagePostActivity::class.java)
         startActivity(myIntent)
     }
 
