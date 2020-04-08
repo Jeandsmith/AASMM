@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.aasmm.LOGIN_ACTIVITY_TAG
 import com.example.aasmm.MainLanding
 import com.example.aasmm.R
+import com.example.aasmm.SignUpDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -16,38 +17,22 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
+    private lateinit var _dialog: SignUpDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 //        setProgressBar()
 
+//        Declarations
         auth = FirebaseAuth.getInstance()
+        _dialog = SignUpDialog()
 
         login.setOnClickListener {
             if (validateForm()) {
                 signIn(emailET.text.toString(), password.text.toString())
             } else {
                 Snackbar.make(it, "No empty fields", Snackbar.LENGTH_LONG).show()
-            }
-        }
-    }
-
-
-    // Add a new user
-    private fun CreateAccount(email: String, password: String) {
-        val createUser = auth.createUserWithEmailAndPassword(email, password)
-
-//        This context
-        createUser.addOnCompleteListener(this) {
-
-//            it = task results
-            if (it.isSuccessful) {
-                Log.d(LOGIN_ACTIVITY_TAG, "createUserWithEmail:Success")
-                val user = auth.currentUser
-//                Send this new use info to the next Activity
-            } else {
-                Log.w(LOGIN_ACTIVITY_TAG, "createUserWithEmail:failure", it.exception)
             }
         }
     }
@@ -65,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             } else {
                 Log.w(LOGIN_ACTIVITY_TAG, "signInWithEmail:failure", task.exception)
-                Toast.makeText(this, "Login Failed: User not found", Toast.LENGTH_SHORT).show()
+                _dialog.show(supportFragmentManager, "SIGN_UP_DIALOG")
             }
         }
 

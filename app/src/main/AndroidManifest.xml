@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".CreateNewEventActivity"></activity>
+        <activity android:name=".SignUp"></activity>
+        <activity android:name=".CreateNewEventActivity" />
         <activity android:name=".CreateNewImagePostActivity" />
         <activity android:name=".CreateNewPostActivity" />
         <activity android:name=".MainActivity">
