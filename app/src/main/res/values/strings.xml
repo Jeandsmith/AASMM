@@ -15,4 +15,7 @@
     <string name="new_post">Write New Post</string>
     <string name="write_you_re_new_post_hint">Write you\'re new post</string>
     <string name="create_new_post_text_view">Create A New Post</string>
+    <string name="click_here_to_choose_an_image_to_upload">Click here to choose an image to upload</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="enter_your_caption_here">Enter your caption here</string>
 </resources>
