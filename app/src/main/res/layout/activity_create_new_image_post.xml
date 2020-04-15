@@ -1,65 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateNewImagePostActivity">
 
-    <Button
-        android:id="@+id/uploadImage"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/upload_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageToUpload"
-        app:layout_constraintVertical_bias="0.352"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/upload"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/btnChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/choose_an_image"
+            tools:ignore="ButtonStyle" />
+
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageToUpload"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_gravity="center_horizontal"
-        android:background="#FFFFFF"
-        android:contentDescription="@string/click_here_to_choose_an_image_to_upload"
-        android:tint="#FFFFFF"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.115"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/caption"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/enter_your_caption_here"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/uploadImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageToUpload"
-        app:layout_constraintVertical_bias="0.508"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="match_parent"
+        tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/clickHereText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/click_here_to_choose_an_image_to_upload"
-        app:layout_constraintBottom_toBottomOf="@+id/imageToUpload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageToUpload" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

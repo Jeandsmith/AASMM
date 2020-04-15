@@ -18,4 +18,6 @@
     <string name="click_here_to_choose_an_image_to_upload">Click here to choose an image to upload</string>
     <string name="upload_image">Upload Image</string>
     <string name="enter_your_caption_here">Enter your caption here</string>
+    <string name="choose_an_image">Choose an image</string>
+    <string name="upload">Upload</string>
 </resources>
