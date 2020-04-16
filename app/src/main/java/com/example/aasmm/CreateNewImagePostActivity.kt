@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @file:Suppress("DEPRECATION")
 
 package com.example.aasmm
@@ -14,7 +13,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_create_new_image_post.*
+import kotlinx.android.synthetic.main.activity_create_new_image_post2.*
 import java.io.IOException
 
 class CreateNewImagePostActivity : AppCompatActivity(), View.OnClickListener{
@@ -57,34 +56,16 @@ class CreateNewImagePostActivity : AppCompatActivity(), View.OnClickListener{
         intent.action= Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent,"SELECT PICTURE"), PICK_IMAGE_REQUEST)
     }
-=======
-package com.example.aasmm
-
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-
-class CreateNewImagePostActivity : AppCompatActivity() {
->>>>>>> master
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_new_image_post)
-<<<<<<< HEAD
+        setContentView(R.layout.activity_create_new_image_post2)
+
 
         //Initilize Firebase
         //storage = FirebaseStorage.getInstance()
         //storageReference = storage!!.reference
 
         btnChoose.setOnClickListener(this)
-
-
-    }
-
-}
-
-
-
-=======
     }
 }
->>>>>>> master

@@ -12,9 +12,9 @@ class MainLanding : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_landing)
 
-        val textButton = findViewById<ImageButton>(R.id.text)
-        val imageButton = findViewById<ImageButton>(R.id.image)
-        val eventButton = findViewById<ImageButton>(R.id.event)
+        val textButton = findViewById<ImageButton>(R.id.post_button)
+        val imageButton = findViewById<ImageButton>(R.id.image_button)
+        val eventButton = findViewById<ImageButton>(R.id.event_button)
 
         textButton.setOnClickListener() {
             openTextActivity()
@@ -33,12 +33,12 @@ class MainLanding : AppCompatActivity() {
     }
 
     fun openImageActivity(){
-        val myIntent = Intent(this, ImageActivity::class.java)
+        val myIntent = Intent(this, CreateNewImagePostActivity::class.java)
         startActivity(myIntent)
     }
 
     fun openEventActivity(){
-        val myIntent = Intent(this, EventActivity::class.java)
+        val myIntent = Intent(this, CreateNewEventActivity::class.java)
         startActivity(myIntent)
     }
 }
