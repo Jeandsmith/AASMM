@@ -35,6 +35,7 @@ class SignUpDialog : DialogFragment() {
                 .setNegativeButton(R.string.cancel_sign_up,
                     DialogInterface.OnClickListener { dialog, id ->
 
+                        getDialog()?.cancel()
                     })
             // Create the AlertDialog object and return it
             builder.create()

@@ -24,7 +24,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button">Button</string>
     <string name="main_landing">Main Landing Activity</string>
-    <string name="sign_up_message">Sign Up?</string>
+    <string name="sign_up_message">Sign Up? Your email or password was not found.</string>
     <string name="yes_sign_up">Sign Up</string>
     <string name="cancel_sign_up">Cancel</string>
     <string name="create_account">Create Account</string>

@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.aasmm.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.UserProfileChangeRequest
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
@@ -19,22 +20,19 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+        auth = FirebaseAuth.getInstance()
+
         submit_sign_up.setOnClickListener {
 
 //            TODO : This is always breaking
 
-            Log.d(CREATE_ACCOUNT, "createUserWithEmail:failure")
-            if (validateForm()) createAccount(
-                fullname.text.toString(),
-                userEmail.text.toString(),
-                userPassowrd.text.toString()
-            )
+            if (validateForm()) {
+                createAccount()
+            }
         }
-
     }
 
     private fun validateForm(): Boolean {
-
 
         var valid = true
 
@@ -66,30 +64,37 @@ class SignUp : AppCompatActivity() {
     }
 
     // Add a new user
-    private fun createAccount(userFullName: String, email: String, password: String) {
-        val createUser = auth.createUserWithEmailAndPassword(email, password)
+    private fun createAccount() {
+        auth.createUserWithEmailAndPassword(userEmail.text.toString(), userPassowrd.text.toString())
             .addOnCompleteListener(this) {
+
+                Log.d(CREATE_ACCOUNT, "Creating Account")
+
                 if (it.isSuccessful) {
                     Log.d(CREATE_ACCOUNT, "createUserWithEmail:Success")
                     val user = auth.currentUser
 
-//                [Set the info of the user]
+//                  [Set the info of the user]
                     val profileUpdate = UserProfileChangeRequest.Builder()
-                        .setDisplayName(userFullName)
+                        .setDisplayName(fullname.text.toString())
                         .build()
 
-//              [Commit the values]
+//                  [Commit the values]
                     user?.updateProfile(profileUpdate)
                         ?.addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(this, "User Account Create.", Toast.LENGTH_LONG)
+                                Toast.makeText(this, "User Account Create.\n Welcome ${auth.currentUser}", Toast.LENGTH_LONG)
                                     .show()
-                                startActivity(Intent(this, LoginActivity::class.java))
+                                startActivity(Intent(this, MainLanding::class.java))
                                 finish()
                             }
                         }
                 } else {
                     Log.w(CREATE_ACCOUNT, "createUserWithEmail:failure", it.exception)
+                    Toast.makeText(this, "Unable to create account. ${userEmail.text.toString()} not valid", Toast.LENGTH_LONG)
+                        .show()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
                 }
             }
     }

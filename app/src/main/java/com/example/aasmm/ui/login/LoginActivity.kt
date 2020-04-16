@@ -43,12 +43,19 @@ class LoginActivity : AppCompatActivity() {
         val signIn = auth.signInWithEmailAndPassword(email, password)
         signIn.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
+//                The user is found
                 Log.d(LOGIN_ACTIVITY_TAG, "signInWithEmail;success")
                 val user = auth.currentUser
-                Toast.makeText(this, "Signed in", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Welcome ${auth.currentUser}",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
                 startActivity(Intent(this, MainLanding::class.java))
                 finish()
             } else {
+//                The user is not found
                 Log.w(LOGIN_ACTIVITY_TAG, "signInWithEmail:failure", task.exception)
                 _dialog.show(supportFragmentManager, "SIGN_UP_DIALOG")
             }
