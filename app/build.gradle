@@ -13,6 +13,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -49,4 +50,8 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     // For control over item selection of both touch and mouse driven selection
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+    implementation 'com.google.api-client:google-api-client:1.23.0'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    implementation 'com.google.apis:google-api-services-calendar:v3-rev305-1.23.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
 }
