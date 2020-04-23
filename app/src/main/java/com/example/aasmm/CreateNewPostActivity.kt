@@ -18,6 +18,5 @@ class CreateNewPostActivity : AppCompatActivity() {
         submitPost.setOnClickListener {
             Snackbar.make(it, "Post submitted", Snackbar.LENGTH_SHORT).show()
         }
-
     }
 }
