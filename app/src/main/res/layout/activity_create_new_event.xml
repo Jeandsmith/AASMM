@@ -1,21 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addEvent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateNewEventActivity">
 
-    <fragment
-        android:id="@+id/simple_fragments"
-        class="com.example.aasmm.BlankFragment"
+    <TimePicker
+        android:id="@+id/timePicker1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/addEventA"
+        android:layout_width="152dp"
+        android:layout_height="47dp"
+        android:text="ADD EVENT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/startTime"
+
+    <TextView
+        android:id="@+id/eventDisc"
+        android:layout_width="213dp"
+        android:layout_height="87dp"
+        android:text="Description"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="219dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/eventSum"
+        android:layout_width="213dp"
+        android:layout_height="30dp"
+        android:text="Event Summary"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="100dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/eventLocation"
+        android:layout_width="213dp"
+        android:layout_height="33dp"
+        android:text="Location"
+        tools:layout_editor_absoluteX="99dp"
+        tools:layout_editor_absoluteY="156dp"
+        tools:ignore="MissingConstraints" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="340dp"
+        android:layout_height="296dp"
+        app:layout_constraintBottom_toBottomOf="@+id/timePicker1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/timePicker1" />
+
+    <Button
+        android:id="@+id/startTime"
+        android:layout_width="149dp"
+        android:layout_height="47dp"
+        android:text="Start Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="456dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/endTime"
+        android:layout_width="149dp"
+        android:layout_height="47dp"
+        android:text="End Time"
+        app:layout_constraintBottom_toTopOf="@+id/addEventA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startTime"
+
+    <Button
+        android:id="@+id/date"
+        android:layout_width="149dp"
+        android:layout_height="47dp"
+        android:text="Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="374dp"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
