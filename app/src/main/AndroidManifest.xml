@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/aasmm_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+
         tools:ignore="AllowBackup"
         android:name="androidx.multidex.MultiDexApplication">
 
@@ -24,6 +25,7 @@
 
         <activity android:name=".SignUp" />
         <activity android:name=".CreateNewEventActivity" />
+
         <activity android:name=".CreateNewImagePostActivity" />
         <activity android:name=".CreateNewPostActivity" />
         <activity android:name=".MainActivity">
