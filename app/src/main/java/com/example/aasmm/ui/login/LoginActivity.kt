@@ -10,6 +10,7 @@ import com.example.aasmm.LOGIN_ACTIVITY_TAG
 import com.example.aasmm.MainLanding
 import com.example.aasmm.R
 import com.example.aasmm.SignUpDialog
+import com.facebook.CallbackManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -22,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        var callbackManager = CallbackManager.Factory.create()
 //        setProgressBar()
 
 //        Declarations

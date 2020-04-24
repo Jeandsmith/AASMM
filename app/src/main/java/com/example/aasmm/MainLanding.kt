@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.aasmm.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_landing.*
+import com.facebook.FacebookSdk
+import com.facebook.appevents.AppEventsLogger
 
 class MainLanding : AppCompatActivity() {
 
@@ -15,6 +17,9 @@ class MainLanding : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_landing)
+
+        FacebookSdk.sdkInitialize(applicationContext)
+        AppEventsLogger.activateApp(this)
 
         auth = FirebaseAuth.getInstance()
 
