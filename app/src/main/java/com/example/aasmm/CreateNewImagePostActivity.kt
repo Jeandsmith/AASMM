@@ -59,7 +59,7 @@ class CreateNewImagePostActivity : AppCompatActivity(), View.OnClickListener{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_new_image_post2)
+        setContentView(R.layout.activity_image)
 
 
         //Initilize Firebase
