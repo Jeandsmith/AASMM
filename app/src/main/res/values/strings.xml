@@ -17,4 +17,7 @@
     <string name="create_new_post_text_view">Create A New Post</string>
     <string name="upload">Upload</string>
     <string name="choose_an_image">Choose an image</string>
+
+    <string name="facebook_app_id">897941783976459</string>
+    <string name="fb_login_protocol_scheme">fb897941783976459</string>
 </resources>
