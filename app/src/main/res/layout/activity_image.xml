@@ -17,9 +17,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/upload"
+        app:layout_constraintEnd_toStartOf="@+id/btnChoose"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ButtonStyle,MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="79dp" />
 
     <Button
         android:id="@+id/btnChoose"
@@ -27,8 +28,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/choose_an_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ButtonStyle,MissingConstraints"
-        tools:layout_editor_absoluteX="224dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="79dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
