@@ -20,4 +20,5 @@
 
     <string name="facebook_app_id">897941783976459</string>
     <string name="fb_login_protocol_scheme">fb897941783976459</string>
+    <string name="share">Share</string>
 </resources>

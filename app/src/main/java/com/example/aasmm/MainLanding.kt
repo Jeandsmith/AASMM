@@ -27,17 +27,17 @@ class MainLanding : AppCompatActivity() {
         }
     }
 
-    fun openTextActivity(){
+    private fun openTextActivity(){
         val myIntent = Intent(this, CreateNewPostActivity::class.java)
         startActivity(myIntent)
     }
 
-    fun openImageActivity(){
+    private fun openImageActivity(){
         val myIntent = Intent(this, CreateNewImagePostActivity::class.java)
         startActivity(myIntent)
     }
 
-    fun openEventActivity(){
+    private fun openEventActivity(){
         val myIntent = Intent(this, CreateNewEventActivity::class.java)
         startActivity(myIntent)
     }
