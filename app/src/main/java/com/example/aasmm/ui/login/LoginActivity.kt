@@ -6,10 +6,8 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.aasmm.LOGIN_ACTIVITY_TAG
-import com.example.aasmm.MainLanding
-import com.example.aasmm.R
-import com.example.aasmm.SignUpDialog
+import com.example.aasmm.*
+import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -55,7 +53,15 @@ class LoginActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 )
                     .show()
-                startActivity(Intent(this, MainLanding::class.java))
+
+                val accessToken = AccessToken.getCurrentAccessToken()
+                val loggedIn = accessToken != null && !accessToken.isExpired
+
+//                Take previous users to main landing
+                if (loggedIn) startActivity(Intent(this, MainLanding::class.java))
+
+//                Take new users to the account management activity
+                else startActivity(Intent(this, AccountManager::class.java))
                 finish()
             } else {
 //                The user is not found

@@ -50,7 +50,6 @@ class MainLanding : AppCompatActivity() {
             }
         }
 
-
         image_button.setOnClickListener {
             if (isLoggedIn) {
                 val intent = Intent(this, CreateNewImagePostActivity::class.java)
