@@ -16,7 +16,7 @@
     <string name="write_you_re_new_post_hint">Write you\'re new post</string>
     <string name="create_new_post_text_view">Create A New Post</string>
     <string name="post_button">post</string>
-    <string name="write_new_post">Write New Post</string>
+    <string name="write_new_post">Write What Is On Your Mind</string>
     <string name="sm_title">sm_title</string>
     <string name="social_media_icon">Social media icon</string>
     <string name="facebook_app_id">182214706151789</string>
@@ -29,6 +29,26 @@
     <string name="cancel_sign_up">Cancel</string>
     <string name="create_account">Create Account</string>
     <string name="full_name">Full Name</string>
+    <string name="title_activity_app_settings">AppSettings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="facebook_share">Share</string>
+    <string name="share_link">Share Link</string>
+    <string name="faceboo_sign_in">Faceboo:Sign in</string>
+    <string name="facebook_images">Facebook images</string>
+    <string name="facebook_title_card">Facebook</string>
+    <string name="instagram">Instagram</string>
+    <string name="sign_in_to_account">Sign In To Account</string>
+    <string name="twitter">Twitter</string>
+    <string name="message_loged_in">Logged In</string>
     <string name="posts">Posts</string>
     <string name="text">Text</string>
+    <string name="image">image</string>
+    <string name="event">event</string>
+    <string name="log_in">Log in to Account</string>
 </resources>
