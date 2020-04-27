@@ -36,6 +36,9 @@ class AccountManager : AppCompatActivity() {
 
             _textField = findViewById(R.id.fbTextField)
             _textField.text = getString(R.string.message_loged_in)
+        }else{
+            _textField = findViewById(R.id.fbTextField)
+            _textField.text = getString(R.string.message_loged_in)
         }
     }
 
