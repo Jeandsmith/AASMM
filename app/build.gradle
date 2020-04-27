@@ -65,6 +65,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.3.1'
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
+
     // For control over item selection of both touch and mouse driven selection
     implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
     implementation "com.squareup.moshi:moshi:1.9.2"
@@ -73,5 +74,5 @@ dependencies {
     implementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
     implementation 'com.google.apis:google-api-services-calendar:v3-rev305-1.23.0'
     implementation 'androidx.multidex:multidex:2.0.1'
-
+    implementation 'com.squareup.moshi:moshi-adapters:1.9.2'
 }
