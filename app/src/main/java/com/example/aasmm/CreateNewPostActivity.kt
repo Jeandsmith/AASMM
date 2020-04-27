@@ -1,9 +1,13 @@
 package com.example.aasmm
 
+
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
+import com.facebook.share.model.ShareLinkContent
+import com.facebook.share.widget.ShareButton
 import kotlinx.android.synthetic.main.activity_create_new_post.*
+
 
 class CreateNewPostActivity : AppCompatActivity() {
 
@@ -11,13 +15,20 @@ class CreateNewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
 
-//        if (newPost.text != null){
-//
-//        }
+//        val shareDi = ShareDialog(this)
+
+        val content = ShareLinkContent.Builder()
+            .setQuote("Very nice link")
+            .setContentUrl(Uri.parse("https://youtube.com"))
+            .build()
+
+
+//        if (shareDi.canShow(content)) shareDi.show(content)
+        val shareButton: ShareButton = findViewById(R.id.shareButton)
+        shareButton.shareContent = content
 
         submitPost.setOnClickListener {
-            Snackbar.make(it, "Post submitted", Snackbar.LENGTH_SHORT).show()
+            shareButton.performClick()
         }
-
     }
 }
