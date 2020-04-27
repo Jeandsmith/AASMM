@@ -46,4 +46,5 @@
     <string name="instagram">Instagram</string>
     <string name="sign_in_to_account">Sign In To Account</string>
     <string name="twitter">Twitter</string>
+    <string name="message_loged_in">Logged In</string>
 </resources>

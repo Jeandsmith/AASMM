@@ -11,6 +11,7 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_account_manager.*
 
 
@@ -28,12 +29,13 @@ class AccountManager : AppCompatActivity() {
         val loggedIn = accessToken != null && !accessToken.isExpired
 
         if (!loggedIn){
-            _textField = findViewById(R.id.fbTextField)
-//            Change the text
-        }
+            fbCard.setOnClickListener {
+                Snackbar.make(it, "Clicked Face", Snackbar.LENGTH_SHORT).show()
+                authFacebook()
+            }
 
-        fbCard.setOnClickListener {
-            authFacebook()
+            _textField = findViewById(R.id.fbTextField)
+            _textField.text = getString(R.string.message_loged_in)
         }
     }
 
