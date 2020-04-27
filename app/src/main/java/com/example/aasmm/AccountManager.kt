@@ -4,18 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
-import com.facebook.internal.Mutable
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
-import com.facebook.login.widget.LoginButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_account_manager.*
-import java.io.StringReader
 
 
 class AccountManager : AppCompatActivity() {
@@ -28,24 +24,14 @@ class AccountManager : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_manager)
 
-        val accessToken = AccessToken.getCurrentAccessToken()
-        val loggedIn = accessToken != null && !accessToken.isExpired
         authFacebook()
 
-        if (!loggedIn){
+//        Sign in or out from facebook
+        fbCard.setOnClickListener {
+            Snackbar.make(it, "Clicked Face", Snackbar.LENGTH_SHORT).show()
 
-            fbCard.setOnClickListener {
-                Snackbar.make(it, "Clicked Face", Snackbar.LENGTH_SHORT).show()
-
-                LoginManager.getInstance().logInWithReadPermissions(this, mutableListOf("public_profile"))
-
-//                Set card info to show the user is logged in
-                _textField = findViewById(R.id.fbTextField)
-                _textField.text = getString(R.string.message_loged_in)
-            }
-        }else{
-            _textField = findViewById(R.id.fbTextField)
-            _textField.text = getString(R.string.sign_in_to_account)
+            LoginManager.getInstance()
+                .logInWithReadPermissions(this, mutableListOf("public_profile"))
         }
     }
 
@@ -62,11 +48,14 @@ class AccountManager : AppCompatActivity() {
         LoginManager.getInstance().registerCallback(callbackManager,
             object : FacebookCallback<LoginResult?> {
                 override fun onSuccess(loginResult: LoginResult?) {
-                   // code
+//                    Set card info to show the user is logged in
+                    _textField = findViewById(R.id.fbTextField)
+                    _textField.text = getString(R.string.message_loged_in)
                 }
 
                 override fun onCancel() {
-                    // App code
+                    _textField = findViewById(R.id.fbTextField)
+                    _textField.text = getString(R.string.sign_in_to_account)
                 }
 
                 override fun onError(exception: FacebookException) {
@@ -76,7 +65,7 @@ class AccountManager : AppCompatActivity() {
 
     }
 
-//    Overrider the back button on this activity
+    //    Overrider the back button on this activity
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, MainLanding::class.java))
