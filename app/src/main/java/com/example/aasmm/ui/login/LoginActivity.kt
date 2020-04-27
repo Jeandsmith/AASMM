@@ -6,10 +6,8 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.aasmm.LOGIN_ACTIVITY_TAG
-import com.example.aasmm.MainLanding
-import com.example.aasmm.R
-import com.example.aasmm.SignUpDialog
+import com.example.aasmm.*
+import com.facebook.AccessToken
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -22,7 +20,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-//        setProgressBar()
 
 //        Declarations
         auth = FirebaseAuth.getInstance()
@@ -45,14 +42,22 @@ class LoginActivity : AppCompatActivity() {
             if (task.isSuccessful) {
 //                The user is found
                 Log.d(LOGIN_ACTIVITY_TAG, "signInWithEmail;success")
-                val user = auth.currentUser
+
                 Toast.makeText(
                     this,
                     "Welcome ${auth.currentUser}",
                     Toast.LENGTH_LONG
                 )
                     .show()
-                startActivity(Intent(this, MainLanding::class.java))
+
+                val accessToken = AccessToken.getCurrentAccessToken()
+                val loggedIn = accessToken != null && !accessToken.isExpired
+
+//                Take previous users to main landing
+                if (loggedIn) startActivity(Intent(this, MainLanding::class.java))
+
+//                Take new users to the account management activity
+                else startActivity(Intent(this, AccountManager::class.java))
                 finish()
             } else {
 //                The user is not found

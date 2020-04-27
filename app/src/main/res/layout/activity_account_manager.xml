@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainLanding">
+    tools:context=".AccountManager">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -17,20 +17,8 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center_vertical"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:text="@string/posts"
-            android:textColor="#ffff"
-            android:textSize="24sp" />
-
         <androidx.cardview.widget.CardView
-            android:id="@+id/post_button"
+            android:id="@+id/fbCard"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="30dp"
@@ -41,8 +29,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/icons"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/icons">
 
 
                 <LinearLayout
@@ -54,18 +42,24 @@
                     android:orientation="horizontal">
 
 
+
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="@string/text"
-                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/facebook_title_card"
                             android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/fbTextField"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sign_in_to_account"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -75,11 +69,11 @@
 
 
                         <ImageView
+                            android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:contentDescription="@string/facebook_images"
-                            app:srcCompat="@drawable/ic_quote" />
+                            android:src="@drawable/facebook"
+                            android:contentDescription="@string/facebook_images" />
 
                     </RelativeLayout>
 
@@ -93,7 +87,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/image_button"
+            android:id="@+id/insCard"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="30dp"
@@ -104,8 +98,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/icons"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/icons">
 
 
                 <LinearLayout
@@ -117,18 +111,24 @@
                     android:orientation="horizontal">
 
 
+
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="@string/image"
-                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/instagram"
                             android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/insTextField"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sign_in_to_account"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -138,10 +138,11 @@
 
 
                         <ImageView
+                            android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            app:srcCompat="@drawable/image" />
+                            android:src="@drawable/instagram"
+                            android:contentDescription="@string/facebook_images" />
 
                     </RelativeLayout>
 
@@ -155,7 +156,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/event_button"
+            android:id="@+id/tweetCard"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="30dp"
@@ -166,8 +167,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/icons"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/icons">
 
 
                 <LinearLayout
@@ -179,18 +180,24 @@
                     android:orientation="horizontal">
 
 
+
                     <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="@string/event"
-                            android:textAllCaps="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/twitter"
                             android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/twitterTextField"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sign_in_to_account"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -200,23 +207,28 @@
 
 
                         <ImageView
+                            android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            app:srcCompat="@drawable/event" />
+                            android:src="@drawable/twitter"
+                            android:contentDescription="@string/facebook_images" />
 
                     </RelativeLayout>
 
-
                 </LinearLayout>
-
 
             </LinearLayout>
 
-
         </androidx.cardview.widget.CardView>
 
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:visibility="gone" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

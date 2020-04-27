@@ -91,7 +91,7 @@ class SignUp : AppCompatActivity() {
                         }
                 } else {
                     Log.w(CREATE_ACCOUNT, "createUserWithEmail:failure", it.exception)
-                    Toast.makeText(this, "Unable to create account. ${userEmail.text.toString()} not valid", Toast.LENGTH_LONG)
+                    Toast.makeText(this, "Unable to create account. ${userEmail.text} not valid", Toast.LENGTH_LONG)
                         .show()
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
