@@ -31,6 +31,7 @@ class SignUpDialog : DialogFragment() {
                     DialogInterface.OnClickListener { dialog, id ->
                         val intent = Intent(it, SignUp::class.java)
                         startActivity(intent)
+                        dialog.dismiss()
                     })
                 .setNegativeButton(R.string.cancel_sign_up,
                     DialogInterface.OnClickListener { dialog, id ->

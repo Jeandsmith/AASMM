@@ -29,4 +29,6 @@
     <string name="cancel_sign_up">Cancel</string>
     <string name="create_account">Create Account</string>
     <string name="full_name">Full Name</string>
+    <string name="posts">Posts</string>
+    <string name="text">Text</string>
 </resources>
