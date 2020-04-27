@@ -11,14 +11,9 @@ import kotlinx.android.synthetic.main.activity_main_landing.*
 
 class MainLanding : AppCompatActivity() {
 
-    //    Declare firebase instance
-    private lateinit var auth: FirebaseAuth
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_landing)
-
-        auth = FirebaseAuth.getInstance()
 
 //        Dialogue to be shown to the user if no account is found on the app
         val ad = AlertDialog.Builder(this)
@@ -63,19 +58,12 @@ class MainLanding : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
+        manageAccountCard.setOnClickListener{
+            startActivity(Intent(this, AccountManager::class.java))
+        }
+
 //
-//
-//        Ask the user if sure to sign out
-//        logoutButton.setOnClickListener {
-////            auth.signOut()
-////            val intent = Intent(this, LoginActivity::class.java)
-////            startActivity(intent)
-////            finish()
-//            if (isLoggedIn) {
-//                val intent = Intent(this, AccountManager::class.java)
-//                startActivity(intent)
-//            }
-//        }
 
     }
 }

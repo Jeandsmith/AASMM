@@ -51,4 +51,7 @@
     <string name="image">image</string>
     <string name="event">event</string>
     <string name="log_in">Log in to Account</string>
+    <string name="manage">Manage</string>
+    <string name="logout_of_aasmm">Logout Of AASMM</string>
+    <string name="orMessage">or</string>
 </resources>

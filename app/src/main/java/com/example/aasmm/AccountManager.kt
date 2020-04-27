@@ -4,12 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.aasmm.ui.login.LoginActivity
+import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_account_manager.*
 
 
@@ -18,6 +21,8 @@ class AccountManager : AppCompatActivity() {
     //    Handle user login
     private val callbackManager = CallbackManager.Factory.create()
     private lateinit var _textField: TextView
+    private lateinit var auth: FirebaseAuth
+    private lateinit var accessToken: AccessToken
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +66,21 @@ class AccountManager : AppCompatActivity() {
                     // App code
                 }
             })
+
+        auth = FirebaseAuth.getInstance()
+
+//        Ask the user if sure to sign out
+        logoutCard.setOnClickListener {
+            auth.signOut()
+
+//            Log out of facebook account
+            LoginManager.getInstance().logOut()
+
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
     }
 
