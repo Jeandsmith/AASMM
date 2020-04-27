@@ -15,7 +15,8 @@ class CreateNewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
 
-//        val shareDi = ShareDialog(this)
+
+//        Create share interface
 
         val content = ShareLinkContent.Builder()
             .setQuote("Very nice link")
