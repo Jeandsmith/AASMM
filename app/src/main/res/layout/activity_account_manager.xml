@@ -58,7 +58,7 @@
                             android:id="@+id/fbTextField"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Sign In To Account"
+                            android:text="@string/sign_in_to_account"
                             android:textSize="16sp" />
 
                     </LinearLayout>

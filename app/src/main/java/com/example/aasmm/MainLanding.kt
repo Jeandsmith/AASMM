@@ -57,25 +57,26 @@ class MainLanding : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+
         event_button.setOnClickListener {
             if (isLoggedIn) {
                 val intent = Intent(this, CreateNewEventActivity::class.java)
                 startActivity(intent)
             }
         }
-
-
+//
+//
 //        Ask the user if sure to sign out
-        logoutButton.setOnClickListener {
-//            auth.signOut()
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
-            if (isLoggedIn) {
-                val intent = Intent(this, AccountManager::class.java)
-                startActivity(intent)
-            }
-        }
+//        logoutButton.setOnClickListener {
+////            auth.signOut()
+////            val intent = Intent(this, LoginActivity::class.java)
+////            startActivity(intent)
+////            finish()
+//            if (isLoggedIn) {
+//                val intent = Intent(this, AccountManager::class.java)
+//                startActivity(intent)
+//            }
+//        }
 
     }
 }
