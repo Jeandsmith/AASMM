@@ -1,41 +1,21 @@
 package com.example.aasmm
 
-
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.provider.CalendarContract
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport
-import com.google.api.client.util.DateTime
-import com.google.api.services.calendar.model.Event
-import com.google.api.services.calendar.model.EventDateTime
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import kotlinx.android.synthetic.main.activity_create_new_event.*
+import java.text.SimpleDateFormat
 import java.util.*
-import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
-import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-import com.google.api.client.http.HttpRequestInitializer
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.services.calendar.Calendar;
-import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.services.calendar.model.Events;
-import org.w3c.dom.DOMStringList
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.GeneralSecurityException;
-import java.util.Collections;
-import java.util.List;
+
 
 
 class CreateNewEventActivity : AppCompatActivity() {
@@ -82,110 +62,128 @@ class CreateNewEventActivity : AppCompatActivity() {
                 .build();
 
 */
-        calendarView.visibility = INVISIBLE
-        timePicker1.visibility = INVISIBLE
+        val c = Calendar.getInstance()
+        c.time = Date(System.currentTimeMillis())
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
 
-        timePicker1.setIs24HourView(true)
+        val newDate: Calendar = Calendar.getInstance()
+        var startDate: Calendar
+        var endDate: Calendar
 
-        calendarView.setDate(System.currentTimeMillis(), false, true)
+        date.setOnClickListener {
+            val dpd = DatePickerDialog(
+                this,
+                DatePickerDialog.OnDateSetListener { view, newYear, newMonth, newDay ->
 
-        var startDate = Date(calendarView.date)
-        var endDate = Date(calendarView.date)
+                    dateText.setText(newYear.toString() + "-" + (newMonth + 1) + "-" + newDay)
+                    newDate.set(newYear, newMonth, newDay)
 
-        date.setOnClickListener{
-            if (calendarView.visibility == INVISIBLE){
-                eventSum.visibility = INVISIBLE
-                eventDisc.visibility = INVISIBLE
-                eventLocation.visibility = INVISIBLE
-                startTime.visibility = INVISIBLE
-                endTime.visibility = INVISIBLE
-                calendarView.visibility  = VISIBLE
-            }
-            else{
-                eventSum.visibility = VISIBLE
-                eventDisc.visibility = VISIBLE
-                eventLocation.visibility = VISIBLE
-                calendarView.visibility  = INVISIBLE
-                startTime.visibility = VISIBLE
-                endTime.visibility = VISIBLE
+                },
+                year,
+                month,
+                day
+            )
 
-                startDate = Date(calendarView.date)
-                endDate = Date(calendarView.date)
+            dpd.show()
 
-                date.text = startDate.toString()
-
-            }
         }
 
 
 
-        startTime.setOnClickListener{
-            if (calendarView.visibility == INVISIBLE){
-                eventSum.visibility = INVISIBLE
-                eventDisc.visibility = INVISIBLE
-                eventLocation.visibility = INVISIBLE
-                timePicker1.visibility  = VISIBLE
-                date.visibility = INVISIBLE
-                endTime.visibility = INVISIBLE
+
+        startTime.setOnClickListener {
+            startDate = newDate
+            val timeSetListenerA = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                startDate.set(Calendar.HOUR_OF_DAY, hour)
+                startDate.set(Calendar.MINUTE, minute)
+                startTimeText.setText(SimpleDateFormat("HH:mm").format(startDate.time))
             }
-            else{
-                eventSum.visibility = VISIBLE
-                eventDisc.visibility = VISIBLE
-                eventLocation.visibility = VISIBLE
-                timePicker1.visibility  = INVISIBLE
-                date.visibility = VISIBLE
-                endTime.visibility = VISIBLE
-
-
-
-                startTime.text = timePicker1.toString()
-                startDate = Date(calendarView.date)
-                endDate = Date(calendarView.date)
-
-                startDate.hours = timePicker1.hour
-                startDate.minutes = timePicker1.minute
-
-
-
-            }
+            TimePickerDialog(
+                this,
+                timeSetListenerA,
+                startDate.get(Calendar.HOUR_OF_DAY),
+                startDate.get(Calendar.MINUTE),
+                true
+            ).show()
         }
 
-        startTime.setOnClickListener{
-            if (calendarView.visibility == INVISIBLE){
-                eventSum.visibility = INVISIBLE
-                eventDisc.visibility = INVISIBLE
-                eventLocation.visibility = INVISIBLE
-                timePicker1.visibility  = VISIBLE
-                date.visibility = INVISIBLE
-                startTime.visibility = INVISIBLE
+        endTime.setOnClickListener {
+            endDate = newDate
+            val timeSetListenerB = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                endDate.set(Calendar.HOUR_OF_DAY, hour)
+                endDate.set(Calendar.MINUTE, minute)
+                endTimeText.setText(SimpleDateFormat("HH:mm").format(endDate.time))
             }
-            else{
-                eventSum.visibility = VISIBLE
-                eventDisc.visibility = VISIBLE
-                eventLocation.visibility = VISIBLE
-                timePicker1.visibility  = INVISIBLE
-                date.visibility = VISIBLE
-                startTime.visibility = VISIBLE
+            TimePickerDialog(
+                this,
+                timeSetListenerB,
+                endDate.get(Calendar.HOUR_OF_DAY),
+                endDate.get(Calendar.MINUTE),
+                true
+            ).show()
+        }
 
+        fun intentHandler(startDate: Calendar, endDate: Calendar) {
+            val intent = Intent(Intent.ACTION_EDIT);
+            intent.type = "vnd.android.cursor.item/event";
+            intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDate);
+            intent.putExtra(CalendarContract.Events.ALL_DAY, false);
+            intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDate);
+            intent.putExtra(CalendarContract.Events.TITLE, eventSum.text.toString());
+            intent.putExtra(CalendarContract.Events.EVENT_LOCATION, eventLocation.text.toString())
+            intent.putExtra(CalendarContract.Events.DESCRIPTION, eventDisc.text.toString())
+            startActivity(intent)
+        }
 
+        fun dateJson(): JsonAdapter<Date> {
+            /*val customDateAdapter: Any = object : Any() {
+                var dateFormat: DateFormat? = null
 
-                startTime.text = timePicker1.toString()
-                startDate = Date(calendarView.date)
-                endDate = Date(calendarView.date)
+                @ToJson
+                @Synchronized
+                fun dateToJson(d: Date?): String? {
+                    return dateFormat?.format(d)
+                }
 
-                endDate.hours = timePicker1.hour
-                endDate.minutes = timePicker1.minute
+                @FromJson
+                @Synchronized
+                @Throws(ParseException::class)
+                fun dateToJson(s: String?): Date? {
+                    return dateFormat?.parse(s)
+                }
 
-
-
+                init {
+                    dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm")
+                    (dateFormat as SimpleDateFormat).timeZone = TimeZone.getTimeZone("EST")
+                }
             }
+            */
+
+
+
+            val moshi = Moshi.Builder()
+                .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
+                .build()
+
+            return moshi.adapter(Date::class.java)
+        }
+
+        fun dateToCalendar(date: Date): Calendar {
+
+            var calendar = Calendar.getInstance();
+            calendar.time = date;
+            return calendar;
+
         }
 
 
 
-    addEventA.setOnClickListener {
 
-        /*
+        addEventA.setOnClickListener {
+
+            /*
                 var Event = Event()
                     .setSummary(eventSum.text.toString())
                     .setLocation(eventLocation.text.toString())
@@ -202,23 +200,39 @@ class CreateNewEventActivity : AppCompatActivity() {
 
          */
 
-        var intent = Intent(Intent.ACTION_EDIT);
-        intent.setType("vnd.android.cursor.item/event");
-        intent.putExtra("beginTime", startDate);
-        intent.putExtra("allDay", true);
-        intent.putExtra("rrule", "FREQ=YEARLY");
-        intent.putExtra("endTime", endDate);
-        intent.putExtra("title", "A Test Event from android app");
-        startActivity(intent)
-        val calendarId = "primary"
+            //val dateAdapter: JsonAdapter<Date> = dateMoshi.adapter(Date::class.java)
+            //if(dateAdapter.fromJson("\"1985-04-12T23:20\"")!!.equals(Date(1985, 4, 12, 23, 20)))
+            //    eventDisc.setText("it worked")
+            // else
+            //  eventDisc.setText(("\"" + dateText.text.toString() + "T" + 23 + ":" + 20 + "\""))
 
-        //var service = Build("calendar")
+            //var finalDate = dateAdapter.fromJson("\"2020-04-30T23:20\"")
 
-        //Event = service.events.insert(calendarId, Event).execute()
-        //System.out.printf("Event created: %s\n", Event.getHtmlLink())
 
-            }
+            //val calendarId = "primary"
+
+
+            //var service = Build("calendar")
+
+            //Event = service.events.insert(calendarId, Event).execute()
+            //System.out.printf("Event created: %s\n", Event.getHtmlLink())
+            val startDateString = dateText.text.toString() + "T" + startTimeText.text.toString()
+            val endDateString = dateText.text.toString() + "T" + endTimeText.text.toString()
+            val adapter = dateJson()
+            val startDate = adapter.fromJson("2020-4-30T12:30")
+            val endDate = adapter.fromJson("2020-4-30T12:45")
+            eventDisc.setText(startDateString)
+            val finalStart = startDate?.let { it1 -> dateToCalendar(it1) }
+            val finalEnd = endDate?.let{ it2 -> dateToCalendar(it2)}
+
+
+            if (finalStart != null && finalEnd != null) {
+              intentHandler(finalStart, finalEnd)
+             }
+
+            // }
+
+        }
 
     }
-
 }

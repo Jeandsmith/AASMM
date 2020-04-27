@@ -7,15 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".CreateNewEventActivity">
 
-    <TimePicker
-        android:id="@+id/timePicker1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints" />
-
     <Button
         android:id="@+id/addEventA"
         android:layout_width="152dp"
@@ -23,73 +14,110 @@
         android:text="ADD EVENT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startTime"
+        app:layout_constraintTop_toBottomOf="@+id/endTimeText" />
 
-    <TextView
+    <EditText
         android:id="@+id/eventDisc"
         android:layout_width="213dp"
         android:layout_height="87dp"
         android:text="Description"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="219dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintBottom_toTopOf="@+id/dateText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventLocation" />
 
-    <TextView
+    <EditText
         android:id="@+id/eventSum"
         android:layout_width="213dp"
         android:layout_height="30dp"
-        android:text="Event Summary"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="100dp"
-        tools:ignore="MissingConstraints" />
+        android:text="Event Title"
+        app:layout_constraintBottom_toTopOf="@+id/eventLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <EditText
         android:id="@+id/eventLocation"
         android:layout_width="213dp"
         android:layout_height="33dp"
         android:text="Location"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="156dp"
-        tools:ignore="MissingConstraints" />
-
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="340dp"
-        android:layout_height="296dp"
-        app:layout_constraintBottom_toBottomOf="@+id/timePicker1"
+        app:layout_constraintBottom_toTopOf="@+id/eventDisc"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/timePicker1" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventSum" />
+
+
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="Date"
+        app:layout_constraintBottom_toTopOf="@+id/startTimeText"
+        app:layout_constraintEnd_toStartOf="@+id/date"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eventDisc" />
+
+    <TextView
+        android:id="@+id/startTimeText"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="Start Time"
+        app:layout_constraintBottom_toTopOf="@+id/endTimeText"
+        app:layout_constraintEnd_toStartOf="@+id/startTime"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateText" />
+
+    <TextView
+        android:id="@+id/endTimeText"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:text="End Time"
+        app:layout_constraintBottom_toTopOf="@+id/addEventA"
+        app:layout_constraintEnd_toStartOf="@+id/endTime"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startTimeText" />
 
     <Button
         android:id="@+id/startTime"
-        android:layout_width="149dp"
-        android:layout_height="47dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
         android:text="Start Time"
+        app:layout_constraintBottom_toTopOf="@+id/endTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="456dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/startTimeText"
+        app:layout_constraintTop_toBottomOf="@+id/date"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/endTime"
-        android:layout_width="149dp"
-        android:layout_height="47dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
         android:text="End Time"
         app:layout_constraintBottom_toTopOf="@+id/addEventA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startTime"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/endTimeText"
+        app:layout_constraintTop_toBottomOf="@+id/startTime" />
 
     <Button
         android:id="@+id/date"
-        android:layout_width="149dp"
-        android:layout_height="47dp"
-        android:text="Date"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:text="Set Date"
+        app:layout_constraintBottom_toTopOf="@+id/startTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="374dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/dateText"
+        app:layout_constraintTop_toBottomOf="@+id/eventDisc"
         tools:ignore="MissingConstraints" />
 
 
