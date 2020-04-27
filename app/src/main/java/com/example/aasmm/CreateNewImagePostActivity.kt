@@ -1,3 +1,6 @@
+// TODO: This has to be optimized
+// Use picasso
+
 @file:Suppress("DEPRECATION")
 
 package com.example.aasmm
@@ -58,11 +61,6 @@ class CreateNewImagePostActivity : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_image_post)
-
-
-        //Initilize Firebase
-        //storage = FirebaseStorage.getInstance()
-        //storageReference = storage!!.reference
 
         btnChoose.setOnClickListener(this)
     }
