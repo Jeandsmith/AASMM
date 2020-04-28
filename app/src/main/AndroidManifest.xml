@@ -19,9 +19,6 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
 
         <activity android:name=".SignUp" />
         <activity android:name=".CreateNewEventActivity" />
@@ -43,7 +40,7 @@
 
         <provider
             android:name="com.facebook.FacebookContentProvider"
-            android:authorities="com.facebook.app.FacebookContentProvider@string/facebook_app_id"
+            android:authorities="com.facebook.app.FacebookContentProvider182214706151789"
             android:exported="true" />
     </application>
 

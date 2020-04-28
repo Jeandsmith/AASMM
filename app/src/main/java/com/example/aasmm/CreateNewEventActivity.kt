@@ -39,7 +39,7 @@ class CreateNewEventActivity : AppCompatActivity() {
                 this,
                 DatePickerDialog.OnDateSetListener { view, newYear, newMonth, newDay ->
 
-                    dateText.setText(newYear.toString() + "-" + (newMonth + 1) + "-" + newDay)
+                    dateText.text = newYear.toString() + "-" + (newMonth + 1) + "-" + newDay
                     newDate.set(newYear, newMonth, newDay)
 
                 },
@@ -57,7 +57,7 @@ class CreateNewEventActivity : AppCompatActivity() {
             val timeSetListenerA = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                 startDate.set(Calendar.HOUR_OF_DAY, hour)
                 startDate.set(Calendar.MINUTE, minute)
-                startTimeText.setText(SimpleDateFormat("HH:mm").format(startDate.time))
+                startTimeText.text = SimpleDateFormat("HH:mm").format(startDate.time)
             }
             TimePickerDialog(
                 this,
@@ -73,7 +73,7 @@ class CreateNewEventActivity : AppCompatActivity() {
             val timeSetListenerB = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
                 endDate.set(Calendar.HOUR_OF_DAY, hour)
                 endDate.set(Calendar.MINUTE, minute)
-                endTimeText.setText(SimpleDateFormat("HH:mm").format(endDate.time))
+                endTimeText.text = SimpleDateFormat("HH:mm").format(endDate.time)
             }
             TimePickerDialog(
                 this,
@@ -85,12 +85,12 @@ class CreateNewEventActivity : AppCompatActivity() {
         }
 
         fun intentHandler(startDate: Calendar, endDate: Calendar) {
-            val intent = Intent(Intent.ACTION_EDIT);
-            intent.type = "vnd.android.cursor.item/event";
-            intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDate);
-            intent.putExtra(CalendarContract.Events.ALL_DAY, false);
-            intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDate);
-            intent.putExtra(CalendarContract.Events.TITLE, eventSum.text.toString());
+            val intent = Intent(Intent.ACTION_EDIT)
+            intent.type = "vnd.android.cursor.item/event"
+            intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDate)
+            intent.putExtra(CalendarContract.Events.ALL_DAY, false)
+            intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDate)
+            intent.putExtra(CalendarContract.Events.TITLE, eventSum.text.toString())
             intent.putExtra(CalendarContract.Events.EVENT_LOCATION, eventLocation.text.toString())
             intent.putExtra(CalendarContract.Events.DESCRIPTION, eventDisc.text.toString())
             startActivity(intent)
@@ -107,9 +107,9 @@ class CreateNewEventActivity : AppCompatActivity() {
 
         fun dateToCalendar(date: Date): Calendar {
 
-            var calendar = Calendar.getInstance();
-            calendar.time = date;
-            return calendar;
+            var calendar = Calendar.getInstance()
+            calendar.time = date
+            return calendar
 
         }
 

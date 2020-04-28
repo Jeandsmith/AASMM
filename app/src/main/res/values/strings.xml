@@ -14,7 +14,7 @@
     <string name="newPostQuote">New Post Quote Button</string>
     <string name="new_post">Write New Post</string>
     <string name="write_you_re_new_post_hint">Write you\'re new post</string>
-    <string name="create_new_post_text_view">Create A New Post</string>
+    <string name="create_new_post_text_view">Share A New link</string>
     <string name="post_button">post</string>
     <string name="write_new_post">Write What Is On Your Mind</string>
     <string name="sm_title">sm_title</string>
@@ -54,4 +54,8 @@
     <string name="manage">Manage</string>
     <string name="logout_of_aasmm">Logout Of AASMM</string>
     <string name="orMessage">or</string>
+    <string name="choose_an_image">Choose Image</string>
+    <string name="share">Share</string>
+    <string name="give_meaning_to_the_image">Write A Meaningful Caption</string>
+    <string name="post">Post</string>
 </resources>

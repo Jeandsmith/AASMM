@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.facebook.AccessToken
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main_landing.*
 
 class MainLanding : AppCompatActivity() {
