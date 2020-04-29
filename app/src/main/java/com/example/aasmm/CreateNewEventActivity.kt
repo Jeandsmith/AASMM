@@ -1,13 +1,25 @@
 package com.example.aasmm
 
+import android.Manifest
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.ContentResolver
+import android.content.ContentValues
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
@@ -19,11 +31,65 @@ import java.util.*
 
 class CreateNewEventActivity : AppCompatActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.M)
+    private val TAG = "PermissionDemo"
+    private val RECORD_REQUEST_CODE = 100
+
+    private fun setupPermissions() {
+        val permission = ContextCompat.checkSelfPermission(this,
+            Manifest.permission.RECORD_AUDIO)
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG, "Permission to record denied")
+            makeRequest()
+        }
+    }
+
+    private fun makeRequest() {
+        ActivityCompat.requestPermissions(this,
+            arrayOf(Manifest.permission.WRITE_CALENDAR),
+            RECORD_REQUEST_CODE)
+    }
+
+
+
+@RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_event)
+    //        Dialogue to be shown to the user if date and time fields are incomplete
+    val noDate = AlertDialog.Builder(this)
+        .setPositiveButton(
+            "Return",
+            DialogInterface.OnClickListener { dialog, id ->
+                dialog?.cancel()
+            })
+        .setNegativeButton("Cancel", DialogInterface.OnClickListener { dialog, id ->
+//              Sends User back to Main Landing
+            startActivity(Intent(this, MainLanding::class.java))
+            finish()
+        })
+        .setMessage("Please Set Date & Time")
+        .create()
 
+            //        Dialogue to be shown to the user if data is sent to be added to calendar
+            val success = AlertDialog.Builder(this)
+        .setPositiveButton(
+            "Return to Main Landing",
+            DialogInterface.OnClickListener { dialog, id ->
+//                Send the user back to main landing
+                startActivity(Intent(this, MainLanding::class.java))
+                finish()
+            })
+        .setNegativeButton("Add New Event", DialogInterface.OnClickListener { dialog, id ->
+            startActivity(Intent(this, CreateNewEventActivity::class.java))
+            finish()
+        })
+        .setMessage("Success!")
+        .create()
+
+        setupPermissions()
+
+    //Initializing fields for time and date pickers
         val c = Calendar.getInstance()
         c.time = Date(System.currentTimeMillis())
         val year = c.get(Calendar.YEAR)
@@ -31,15 +97,16 @@ class CreateNewEventActivity : AppCompatActivity() {
         val day = c.get(Calendar.DAY_OF_MONTH)
 
         val newDate: Calendar = Calendar.getInstance()
-        var startDate: Calendar
-        var endDate: Calendar
 
+        //Date Picker Button - Allows user to select a date
         date.setOnClickListener {
             val dpd = DatePickerDialog(
                 this,
                 DatePickerDialog.OnDateSetListener { view, newYear, newMonth, newDay ->
-
-                    dateText.text = newYear.toString() + "-" + (newMonth + 1) + "-" + newDay
+                    if(newMonth < 10)
+                        dateText.setText(newYear.toString() + "-0" + (newMonth + 1) + "-" + newDay)
+                    else
+                        dateText.setText(newYear.toString() + "-" + (newMonth + 1) + "-" + newDay)
                     newDate.set(newYear, newMonth, newDay)
 
                 },
@@ -52,88 +119,98 @@ class CreateNewEventActivity : AppCompatActivity() {
 
         }
 
+    //Time Picker Button used to pick the start time
         startTime.setOnClickListener {
-            startDate = newDate
             val timeSetListenerA = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                startDate.set(Calendar.HOUR_OF_DAY, hour)
-                startDate.set(Calendar.MINUTE, minute)
-                startTimeText.text = SimpleDateFormat("HH:mm").format(startDate.time)
+                newDate.set(Calendar.HOUR_OF_DAY, hour)
+                newDate.set(Calendar.MINUTE, minute)
+                startTimeText.setText(SimpleDateFormat("HH:mm").format(newDate.time))
             }
             TimePickerDialog(
                 this,
                 timeSetListenerA,
-                startDate.get(Calendar.HOUR_OF_DAY),
-                startDate.get(Calendar.MINUTE),
-                true
+                newDate.get(Calendar.HOUR_OF_DAY),
+                newDate.get(Calendar.MINUTE),
+                false
             ).show()
+
+
         }
 
+        //Time Picker Button used to pick the end time
         endTime.setOnClickListener {
-            endDate = newDate
             val timeSetListenerB = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                endDate.set(Calendar.HOUR_OF_DAY, hour)
-                endDate.set(Calendar.MINUTE, minute)
-                endTimeText.text = SimpleDateFormat("HH:mm").format(endDate.time)
+                newDate.set(Calendar.HOUR_OF_DAY, hour)
+                newDate.set(Calendar.MINUTE, minute)
+                endTimeText.setText(SimpleDateFormat("HH:mm").format(newDate.time))
             }
             TimePickerDialog(
                 this,
                 timeSetListenerB,
-                endDate.get(Calendar.HOUR_OF_DAY),
-                endDate.get(Calendar.MINUTE),
+                newDate.get(Calendar.HOUR_OF_DAY),
+                newDate.get(Calendar.MINUTE),
                 true
             ).show()
         }
 
-        fun intentHandler(startDate: Calendar, endDate: Calendar) {
-            val intent = Intent(Intent.ACTION_EDIT)
-            intent.type = "vnd.android.cursor.item/event"
-            intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startDate)
-            intent.putExtra(CalendarContract.Events.ALL_DAY, false)
-            intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endDate)
-            intent.putExtra(CalendarContract.Events.TITLE, eventSum.text.toString())
-            intent.putExtra(CalendarContract.Events.EVENT_LOCATION, eventLocation.text.toString())
-            intent.putExtra(CalendarContract.Events.DESCRIPTION, eventDisc.text.toString())
-            startActivity(intent)
-        }
-
-        fun dateJson(): JsonAdapter<Date> {
-
-            val moshi = Moshi.Builder()
-                .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
-                .build()
-
-            return moshi.adapter(Date::class.java)
-        }
-
-        fun dateToCalendar(date: Date): Calendar {
-
-            var calendar = Calendar.getInstance()
-            calendar.time = date
-            return calendar
-
+        //Function that placed the event into the calendar
+        fun eventHandler(begin: Long, end: Long) {
+            val intent = Intent(Intent.ACTION_INSERT).apply {
+                data = CalendarContract.Events.CONTENT_URI
+                putExtra(CalendarContract.Events.TITLE, eventSum.text.toString())
+                putExtra(CalendarContract.Events.EVENT_LOCATION, eventLocation.text.toString())
+                putExtra(CalendarContract.Events.DESCRIPTION, eventDisc.text.toString())
+                putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, begin)
+                putExtra(CalendarContract.EXTRA_EVENT_END_TIME, end)
+            }
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
         }
 
 
 
+            fun dateToCalendar(date: Date): Calendar {
 
-        addEventA.setOnClickListener {
+                var calendar = Calendar.getInstance()
+                calendar.time = date
+                return calendar
 
-            val startDateString = dateText.text.toString() + "T" + startTimeText.text.toString()
-            val endDateString = dateText.text.toString() + "T" + endTimeText.text.toString()
-            val adapter = dateJson()
-            val startDate = adapter.fromJson("2020-4-30T12:30")
-            val endDate = adapter.fromJson("2020-4-30T12:45")
-            eventDisc.setText(startDateString)
-            val finalStart = startDate?.let { it1 -> dateToCalendar(it1) }
-            val finalEnd = endDate?.let{ it2 -> dateToCalendar(it2)}
+            }
 
 
-            if (finalStart != null && finalEnd != null) {
-              intentHandler(finalStart, finalEnd)
-             }
 
-            // }
+        //Main add event button
+            addEventA.setOnClickListener {
 
+
+                if(dateText.text.toString().length < 10 || startTimeText.text.toString().length > 5 ||endTimeText.text.toString().length > 5)
+                    noDate.show()
+                else {
+                    val year = dateText.text.toString().substring(0..3).toInt()
+                    val month = dateText.text.toString().substring(5..6).toInt() - 1
+                    val day = dateText.text.toString().substring(8..9).toInt()
+                    val startHour = startTimeText.text.toString().substring(0..1).toInt()
+                    val endHour = endTimeText.text.toString().substring(0..1).toInt()
+                    val startMin = startTimeText.text.toString().substring(3..4).toInt()
+                    val endMin = endTimeText.text.toString().substring(3..4).toInt()
+
+                    val finalStart: Long = Calendar.getInstance().run {
+                        set(year, month, day, startHour, startMin)
+                        timeInMillis
+                    }
+                    val finalEnd: Long = Calendar.getInstance().run {
+                        set(year, month, day, endHour, endMin)
+                        timeInMillis
+                    }
+
+                    eventHandler(finalStart, finalEnd)
+
+                    success.show()
+                }
+
+
+                 }
+
+            }
         }
-    }
-}
