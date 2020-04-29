@@ -58,4 +58,6 @@
     <string name="share">Share</string>
     <string name="give_meaning_to_the_image">Write A Meaningful Caption</string>
     <string name="post">Post</string>
+    <string name="sign_in_to_a_account">Sign In To A Account</string>
+    <string name="add_first_account">Add Your First Account</string>
 </resources>

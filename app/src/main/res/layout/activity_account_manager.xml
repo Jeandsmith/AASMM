@@ -17,6 +17,18 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
+        <TextView
+            android:id="@+id/accountMagTextView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:text="@string/sign_in_to_a_account"
+            android:textColor="#ffff"
+            android:textSize="24sp" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/fbCard"
             android:layout_width="match_parent"

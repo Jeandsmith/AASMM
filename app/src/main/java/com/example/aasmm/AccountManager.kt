@@ -80,8 +80,6 @@ class AccountManager : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
-
     }
 
     //    Overrider the back button on this activity
