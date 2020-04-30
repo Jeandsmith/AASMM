@@ -20,9 +20,10 @@
 
     <EditText
         android:id="@+id/eventDisc"
-        android:layout_width="213dp"
+        android:layout_width="363dp"
         android:layout_height="87dp"
-        android:text="Description"
+        android:hint="Description"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/dateText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -31,26 +32,29 @@
 
     <EditText
         android:id="@+id/eventSum"
-        android:layout_width="213dp"
-        android:layout_height="30dp"
-        android:text="Event Title"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Event Title"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/eventLocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
         android:id="@+id/eventLocation"
-        android:layout_width="213dp"
-        android:layout_height="33dp"
-        android:text="Location"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:hint="Location"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/eventDisc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventSum" />
-
 
     <TextView
         android:id="@+id/dateText"
