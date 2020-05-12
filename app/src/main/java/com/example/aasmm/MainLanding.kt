@@ -62,7 +62,5 @@ class MainLanding : AppCompatActivity() {
             startActivity(Intent(this, AccountManager::class.java))
         }
 
-//
-
     }
 }
